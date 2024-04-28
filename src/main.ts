@@ -14,11 +14,14 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const game = new Game(canvas, ctx);
-game.render();
 
-function gameLoop(_delta: number = 0) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  game.render();
+let lastTime = 0;
+
+function gameLoop(timeStamp: number = 0) {
+  const delta = timeStamp - lastTime;
+  lastTime = timeStamp;
+  // ctx.clearRect(0, 0, canvas.width, canvas.height);
+  game.render(delta);
   requestAnimationFrame(gameLoop);
 }
-gameLoop(0);
+requestAnimationFrame(gameLoop);
