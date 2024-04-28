@@ -17,6 +17,7 @@ const game = new Game(canvas, ctx);
 game.render();
 
 function gameLoop(_delta: number = 0) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   game.render();
   requestAnimationFrame(gameLoop);
 }
